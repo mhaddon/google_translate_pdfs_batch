@@ -12,11 +12,11 @@ trap finish EXIT
 
 mkdir -p "${DIR}/parts"
 
-declare -r PATH_TO_PDFS=${1:-$(pwd)}
-declare -r LANGUAGE=${2:-en}
+declare -r PATH_TO_PDFS="${1:-$(pwd)}"
+declare -r LANGUAGE="${2:-en}"
 
 while read -r PDF_FILE_PATH; do
-   declare PDF_FILE_PATH_ENCODED="$(base64 <<< ${PDF_FILE_PATH})"
+   declare PDF_FILE_PATH_ENCODED="$(base64 <<< "${PDF_FILE_PATH}")"
    declare PARTS_FOLDER="${DIR}/parts/${PDF_FILE_PATH_ENCODED}"
    declare BASE_NAME="$(basename "$PDF_FILE_PATH" ".pdf")"
    declare DIR_NAME="$(dirname "$PDF_FILE_PATH")"
