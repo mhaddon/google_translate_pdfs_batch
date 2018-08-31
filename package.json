@@ -1,0 +1,14 @@
+{
+  "name": "google_translate_pdfs_batch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "puppeteer": "^1.7.0"
+  }
+}
