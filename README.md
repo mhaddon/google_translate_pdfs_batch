@@ -10,6 +10,7 @@ Install the following:
 
 - node
 - chrome
+- Ghost Script - https://formulae.brew.sh/formula/ghostscript
 - Poppler - https://formulae.brew.sh/formula/poppler 
 
 ```

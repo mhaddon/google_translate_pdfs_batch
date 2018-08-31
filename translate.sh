@@ -24,7 +24,8 @@ while read -r PDF_FILE_PATH; do
 
    rm -rf "${PARTS_FOLDER}"
    mkdir -p "${PARTS_FOLDER}"
-   pdfseparate "${PDF_FILE_PATH}" "${PARTS_FOLDER}/%d.part.pdf"
+   gs -o "${PARTS_FOLDER}/no_images.pdf" -sDEVICE=pdfwrite -dFILTERIMAGE "${PDF_FILE_PATH}" > /dev/null
+   pdfseparate "${PARTS_FOLDER}/no_images.pdf" "${PARTS_FOLDER}/%d.part.pdf"
 
    while read -r PDF_PART_FILE_PATH; do
        node "${DIR}/index.js" "${PDF_PART_FILE_PATH}" "${LANGUAGE}"
