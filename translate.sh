@@ -28,9 +28,9 @@ while read -r PDF_FILE_PATH; do
 
    while read -r PDF_PART_FILE_PATH; do
        node "${DIR}/index.js" "${PDF_PART_FILE_PATH}" "${LANGUAGE}"
-   done < <(find "${PARTS_FOLDER}" -type f -name "*.part.pdf" | xargs -n1)
+   done < <(find "${PARTS_FOLDER}" -type f -name "*.part.pdf")
 
-   pdfunite $(find "${PARTS_FOLDER}" -type f -name "*.translated.pdf") "${OUTPUT_PATH}"
+   pdfunite $(find "${PARTS_FOLDER}" -type f -name "*.translated.pdf" -exec basename {} + | sort -n -t . -k 1 | sed "s#^#${PARTS_FOLDER}/#") "${OUTPUT_PATH}"
    echo "${OUTPUT_PATH}"
-done < <(find "${PATH_TO_PDFS}" -type f -name "*.pdf" | grep -v ".${LANGUAGE}.pdf" | xargs -n1)
+done < <(find "${PATH_TO_PDFS}" -type f -name "*.pdf" | grep -v ".${LANGUAGE}.pdf")
 
